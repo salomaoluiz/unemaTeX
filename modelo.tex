@@ -1,0 +1,166 @@
+{	%	---------------------------- Apresentacao -----------------------------------	%
+	%																					%
+	%	Desenvolvendo um modelo padrao para trabalhos academicos utilizando o ABNTeX2	%
+	%	Autor: Salomão Luiz de Araújo Neto												%
+	%	GitHub:	https://github.com/salomaoluiz											%
+	%	LinkedIn: https://www.linkedin.com/salomao-luiz									%
+	%																					%
+	%	-----------------------------------------------------------------------------	%	
+}
+
+{	%	------------------------ Informacoes de Uso ---------------------------------	%
+	%																					%
+	%	1. Nao e utilizado acentuacao nas areas de comentario para evitar crash de	 	%
+	%	texto ao ser utilizado em outro sistema, tornando os comentarios ilegiveis.		%
+	%																					%
+	%	2. Ao utilizar este documento, por gentileza de creditos ao autor, com isto		%
+	%	o seu e o meu trabalho sao valorizados.											%
+	%																					%
+	%	3. Realize as modificacoes que achar necessario, seja para adequar aos pedidos	%
+	%	de sua universidade, ou por gosto proprio, mas caso queira realizar uma 		%
+	%	contribuicao com o codigo, o mantenha sempre comentado, para um melhor			%			
+	%	entendimento.																	%
+	%																					%	
+	%	4. Softwares Utilizados: TeXstudio e MikTeX, sempre que for compilar seu		%
+	%	projeto, tenha certeza de possuir conexao com a internet, para que seja 		%
+	%	possivel o download dos pacotes necessarios.									%
+	%																					%
+	%	5. A tela utilzada para a elaboracao deste projeto foi uma 1366x768, recomendo	%
+	%	a utilizacao de uma de igual ou maior resolucao para nao haver bagunca no		%
+	%	desing do projeto.																%
+	%	-----------------------------------------------------------------------------	%
+}
+
+	%	-----------------------------------------------------------------------------	%
+	%	---------------------------	Inicio do Preambulo	-----------------------------	%
+	%	-----------------------------------------------------------------------------	%
+
+\documentclass[	12pt,								%Tamanho da Fonte
+				openright,							%Abre a Direita
+				twoside,							%Imprime Frente/Verso
+				a4paper,							%Folha A4
+				chapter = TITLE,					%Capitulos em Maiusculo
+				section = TITLE,					%Secoes em Maiusculo
+				subsection = TITLE,					%Subsecoes em Maiusculo
+				subsubsection = TITLE,				%Subsubsecoes em Maiusculo
+				english, french, spanish, brazil]	%Idiomas Usados
+				{abntex2}
+
+	%	-----------------------------------------------------------------------------	%
+	%	---------------------------	Pacotes Utilizados	-----------------------------	%
+	%	-----------------------------------------------------------------------------	%
+
+	\usepackage{lmodern}					% Define a fonte Latin Modern para o documento
+	\usepackage[T1]{fontenc}				% Para a utilizacao de acentuacao
+	\usepackage[utf8]{inputenc}				% Utilizacao do codificador UTF8
+	\usepackage{listings}					% Insercao de codigos de programacao
+	\usepackage{indentfirst}				% Identa o primeiro paragrafo de cada secao
+	\usepackage{babel}						% Utilizado para Renomear as Secoes
+	\usepackage{lastpage}					% Utilizado para Pegar a Ultima Folha
+
+	%	-----------------------------------------------------------------------------	%
+	%	-----------------------	Configurações das Paginas	-------------------------	%
+	%	-----------------------------------------------------------------------------	%
+	
+	%	----------------- Define Fonte e tamanho dos Capitulos e Secoes -------------	%
+	\renewcommand{\ABNTEXchapterfont}{\fontfamily{ptm}\fontseries{b}\selectfont}
+	\renewcommand{\ABNTEXchapterfontsize}{\Large}
+	\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+	\renewcommand{\footnotesize}{\small}
+	\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+	%-----------------------------------------------------------------------------------%
+	
+	%	----------------- Define Tamanho e Altura entre Paragrafos ------------------	%	
+	\setlength{\parindent}{1.3cm}		% Define o tamanho do paragrafo
+	\setlength{\parskip}{0.2cm}			% Define a altura entre os paragrafos
+		
+	%	-----------------------------------------------------------------------------	%
+	%	-----------------------	Definindo Novos Comandos ----------------------------	%
+	%	-----------------------------------------------------------------------------	%
+	
+	%	------------------- Comandos para a Utilização no Texto ---------------------	%		
+	%\renewcommand{Novo Comando}{Comando Antigo}
+	\newcommand{\rarrow}{\rightarrow}
+	\newcommand{\larrow}{\leftarrow}
+
+	%	--------------------- Alterações em Nomes Padronizados ----------------------	%		
+	\addto\captionsbrazil
+	{
+		\renewcommand{\bibname}{Referências}
+		\renewcommand{\indexname}{Índice}
+		\renewcommand{\listfigurename}{Lista de Ilustrações}
+		\renewcommand{\listtablename}{Lista de Tabelas}
+		\renewcommand{\pageautorefname}{Página}
+		\renewcommand{\sectionautorefname}{Seção}
+		\renewcommand{\subsectionautorefname}{Subseção}
+		\renewcommand{\paragraphautorefname}{Parágrafo}
+		\renewcommand{\subsubsectionautorefname}{Subsubseção}
+	}
+	%	-----------------------------------------------------------------------------	%
+	%	-----------------------	Configurar Desing da Capa ---------------------------	%
+	%	-----------------------------------------------------------------------------	%
+%	\renewcommand{\imprimircapa} 
+%	{ 
+%		\begin{capa}
+%			\center		
+%			{\ABNTEXchapterfont\normalsize	\imprimirinstituicao}
+%			
+%			\vspace*{1cm}
+%			
+%			{\ABNTEXchapterfont\mdseries\large	\imprimirautor}
+%			
+%			\vspace*{4cm}
+%			{\ABNTEXchapterfont\Large	\imprimirtitulo}
+%			
+%		\end{capa}
+%	}
+	
+	
+	
+	%	-----------------------------------------------------------------------------	%
+	%	-----------------------	Informacoes do Trabalho -----------------------------	%
+	%	-----------------------------------------------------------------------------	%
+	
+	\titulo{Desenvolvendo Trabalhos Acadêmicos com a Utilização da Plataforma LaTeX, Utilizando a Classe AbnTeX2}
+	\autor{Salomão Luiz de Araújo Neto}
+	\instituicao{UNIVERSIDADE DO ESTADO DO MATO GROSSO - UNEMAT \par
+				 FACULDADE DE CIÊNCIAS EXATAS E TECNOLÓGICAS	\par
+			 	 DEPARTAMENTO DE MATEMÁTICA						\par
+		 	 	 Campus de Sinop - MT}
+	\local{Sinop, MT}
+	\data{2018}
+	\tipotrabalho{Monografia}
+	\orientador[Profº Dr. ]{Nome Orientador}
+	
+	\preambulo{Projeto de Pesquisa apresentado à Banca Examinadora do Curso de ** da Universidade **, Campus de **, como parte dos requisitos para obtenção do título de **.}
+	
+\begin{document}
+
+	%	--------------------- Elementos Pre-Textuais ----------------------	%
+\imprimircapa
+\imprimirfolhaderosto*{}
+\input{./elementosPreTextuais/fichaCatalografica/fichaCatalografica.tex}
+%\input{./elementosPreTextuais/errata/errata.tex}
+\input{./elementosPreTextuais/folhaAprovacao/folhaAprovacao.tex}
+\input{./elementosPreTextuais/dedicatoria/dedicatoria.tex}
+\input{./elementosPreTextuais/agradecimentos/agradecimentos.tex}
+\input{./elementosPreTextuais/epigrafe/epigrafe.tex}
+\input{./elementosPreTextuais/resumo/resumo.tex}
+\input{./elementosPreTextuais/abstract/abstract.tex}
+\input{./elementosPreTextuais/resumen/resumen.tex}
+
+\listoffigures*
+
+\listoftables*
+
+\input{./elementosPreTextuais/siglas/siglas.tex}
+\input{./elementosPreTextuais/simbolos/simbolos.tex}
+\tableofcontents*
+	%	--------------------- Elementos Textuais -----------------------	%
+
+\mainmatter
+\input{./elementosTextuais/introducao/introducao.tex}
+\input{./elementosTextuais/capitulo_1/capitulo_1.tex}
+\input{./elementosTextuais/capitulo_2/capitulo_2.tex}
+\input{./elementosTextuais/capitulo_3/capitulo_3.tex}
+\end{document}
