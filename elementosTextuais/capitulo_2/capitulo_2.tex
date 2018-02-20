@@ -1,7 +1,199 @@
-\chapter{Equações e Funções Matemáticas}
+\chapter{Etapa Textual}
 
-Apesar da plataforma de desenvolvimento LaTeX poder ser utilizado por qualquer ramo da ciência para o desenvolvimento de trabalhos com uma excelente tipografia, ela é principalmente utilizada por pessoas das áreas exatas, por conta da enorme facilidade em desenvolver trabalhos com enormes quantidades de equações e fórmulas, com estas se mantendo sempre organizadas.
-\section{Simbologia Matemática}
-\section{Trabalhando com Equações}
-\section{Tabulações}
-\section{Apresentação de Códigos de Programação}
+\section{Equações e Simbologia Matemática}
+Apesar da plataforma de desenvolvimento LaTeX poder ser utilizado por qualquer ramo da ciência para o desenvolvimento de trabalhos com uma excelente tipografia, ela é principalmente utilizada por pessoas das áreas exatas, por conta da enorme facilidade em desenvolver trabalhos com enormes quantidades de equações e fórmulas, com estas se mantendo sempre organizadas. Para fazer a inserção de equações, funções ou simbologia matemática é preciso estar dentro do ambiente matemático, este é uma área apenas para a inserção de fórmulas matemáticas. 
+
+Este espaço pode ser feito de duas formas, dentro do texto, ou em um ambiente separado. Para a utilização dentro do texto, as equações matemáticas precisam ser inseridas dentro de um par de \$, por exemplo \$ 3x\textasciicircum 2 = 2 \$, ao usar essa forma, o código fica da seguinte maneira: $3x^2=2$.
+
+Outra forma de se adicionar fórmulas, funções ou símbolos matemáticos é pelo ambiente \lstinline|\begin{equation} \end{equation}| tudo que se colocar dentro destas funções será centralizado, enumerado, e ficará em formato matemático. Por exemplo, ao usar:
+\begin{lstlisting}
+\begin{equations}\label{equacao1}
+	3x^2 = 2
+\end{equations}
+\end{lstlisting}
+tem-se como resultado:
+
+\begin{equation}\label{equacao1}
+	3x^2 = 2
+\end{equation}
+\
+Está forma é muito útil quando você quer referenciar alguma equação ao longo do texto, pois com o comando \lstinline|\label{}| você pode em qualquer local utilizar o \lstinline|\ref{}| para referenciar aquele ``label'', por exemplo: ``Seja a equação \ref{equacao1} tem-se que...'' é possível fazer isso para todas as equações dentro do ambiente ``equation'', figuras, tabelas, basta alterar o que está escrito dentro do ``label'', e usar o ``ref'' para referenciar ela.
+
+Outra forma de inserir equações matemáticas é utilizando \lstinline|\[ \]| o que colocar dentro destes colchetes será centralizado, mas não sera enumerado, por exemplo:
+\begin{lstlisting}
+\[
+3x^2=2
+\]
+\end{lstlisting}
+terá como resultado:
+\[
+3x^2=2
+\]
+\subsection{Simbologia Matemática}
+O LaTeX possui suporte a diversos símbolos matemáticos, desde simbologia como $\pm \div \bullet \bigtriangleup \neq \gg$ como também letras gregas como $\beta \gamma \delta \epsilon \varepsilon$ entre muitos outros. Para ver todos os símbolos matemáticos vá em ``View'' em ``Show'' e selecione ``Side Panel'', com isso irá abrir uma tela no canto lateral, navegue por ela e veja todos os símbolos que se pode adicionar, sempre fique atento em colocar os símbolos dentro de um ambiente matemático, se não será impossível compilar o projeto.
+\subsection{Trabalhando com Equações}
+O LaTeX tem suporte a diversas funções matemáticas, e alguns comandos que possibilitam o melhoramento dessas equações, a tabela
+
+\begin{table}[htb]
+	\IBGEtab{%
+		\caption{Algumas Funções Matemáticas}%
+		\label{tab_Cap2_equacoes}
+	}{%
+	\begin{tabular}{ccc|ccc}
+		\toprule
+		     Equação      &                   Código                    &      Resultado       &       Equação       &                Código                &     Resultado     \\ \midrule\midrule
+		  Raiz Quadrada   &                \ba sqrt\{x\}                &      $\sqrt{x}$      & Integral Indefinida &             \ba int\{x\}             &     $\int{x}$     \\
+		Raiz a Potencia N &              \ba sqrt[3]\{x\}               &    $\sqrt[3]{x}$     &  Integral Definida  & \ba int\_{2}\textasciicircum{3}\{x\} & $\int_{2}^{3}{x}$ \\
+		    Somatoria     & \ba sum\_\{i=1\}\textasciicircum\{10\}\{x\} & $\sum_{i=1}^{10}{x}$ &       Fração        &          \ba frac\{x\}\{y\}          &   $\frac{x}{y}$   \\ \bottomrule
+	\end{tabular}%
+}{%
+\fonte{Autoria Própria}%
+}
+\end{table}
+
+Muitas outras funções podem ser obtidas indo em ``Math'' e em ``Math Function''. Observe que quando se utiliza uma função complexa dentro de uma tabela, como por exemplo a somatória, ela fica com a aparência um pouco ruim, com pouca organização, para resolver este problema, basta colocar antes da equação o comando \lstinline|\displaystyle| assim ela ficará da seguinte forma:
+\[
+\sum_{i=1}^{10}{x}
+\]
+
+O mesmo vale para integrais, frações, raízes, entre outras.
+\subsection{Tabulações}
+\subsubsection{Matrizes}
+Para a criação de matrizes existem os ambientes ``pmatrix'', ``bmatrix'', ``vmatrix'', ``Vmatrix'', ``matrix'' e ``array''. O ``pmatrix'' serve para a criação de matrizes com parenteses nas bordas, como por exemplo:
+\[
+\begin{pmatrix}
+	2x & 3x \\ 
+	x & 4x
+\end{pmatrix} 
+\]
+
+o ``bmatrix'' serve para criar matrizes na forma de caixa, por exemplo:
+\[
+\begin{bmatrix}
+2x & 3x \\ 
+x & 4x
+\end{bmatrix} 
+\]
+
+o ``vmatrix'' e o ``Vmatrix'' servem para criar matrizes com barras nas bordas, o primeiro com 1 barra, e o segundo com 2 barras, por exemplo: \\
+\begin{center}
+$
+\begin{vmatrix}
+2x & 3x \\ 
+x & 4x
+\end{vmatrix} 
+$
+\hspace*{2cm}
+$
+\begin{Vmatrix}
+2x & 3x \\ 
+x & 4x
+\end{Vmatrix} 
+$
+\end{center}
+
+o ``matrix'' cria uma matriz sem nenhuma borda
+\[
+\begin{matrix}
+2x & 3x \\ 
+x & 4x
+\end{matrix}
+\]
+
+já o ``array'' é possível editar para colocar barras entre cada coluna ou linha, por exemplo:
+\[
+\begin{array}{c|ccc}
+2x & 3y &2z & 4w\\ 
+x & 4y & 3z & 8w \\ \hline
+3x & 7y & 5z & 12w
+\end{array}
+\]
+é possível também colocar o array dentro de um ``bmatrix'', ou ``pmatrix'' ou qualquer outra matriz, mas caso você deseje utilizar por exemplo, um lado de parentese e outro de colchete, é preciso usar as funções \lstinline|\left| e \lstinline|\right| acompanhado do simbolo que deseje, por exemplo:
+\begin{lstlisting}
+\[
+ \left[
+  \begin{array}{c|ccc}
+  2x & 3y &2z & 4w\\ 
+  x & 4y & 3z & 8w \\ \hline
+  3x & 7y & 5z & 12w
+  \end{array}
+ \right)
+\]
+\end{lstlisting}
+que fornece como resultado:
+\[
+\left[
+\begin{array}{c|ccc}
+2x & 3y &2z & 4w\\ 
+x & 4y & 3z & 8w \\ \hline
+3x & 7y & 5z & 12w
+\end{array}
+\right)
+\]
+
+\subsubsection{Tabelas}
+Para a utilização de Tabelas nas normas da ABNT é preciso usar os comandos:
+
+\begin{lstlisting}
+\begin{table}[htb]
+ \IBGEtab{%
+  \caption{Aqui vai o titulo da tabela}%
+  \label{tab_Cap2_exemplo}
+ }{%
+  \begin{tabular}{ccc}
+  	\toprule
+  	     Nome       &     Cidade     &    Estado    \\ \midrule\midrule
+  	Pedro da Silva  &     Cuiaba     & Mato Grosso  \\
+  	  Joao Neves    &   Sao Paulo    &  Sao Paulo   \\
+  	Maria Antonieta & Belo Horizonte & Minas Gerais \\ \bottomrule
+  \end{tabular}%
+ }{%
+  \fonte{Autoria Propria}%
+  \nota[Nota1]{Aqui pode ser inserido uma nota sobre a tabela}
+ }
+\end{table}
+\end{lstlisting}
+
+Isto fornece a seguinte tabela:
+\begin{table}[htb]
+	\IBGEtab{%
+		\caption{Aqui vai o titulo da tabela}%
+		\label{tab_Cap2_exemplo}
+	}{%
+		\begin{tabular}{ccc}
+			\toprule
+			     Nome       &     Cidade     &    Estado    \\ \midrule\midrule
+			Pedro da Silva  &     Cuiaba     & Mato Grosso  \\
+			  João Neves    &   São Paulo    &  São Paulo   \\
+			Maria Antonieta & Belo Horizonte & Minas Gerais \\ \bottomrule
+		\end{tabular}%
+	}{%
+		\fonte{Autoria Própria}%
+		\nota[Nota1]{Aqui pode ser inserido uma nota sobre a tabela}
+	}
+\end{table}
+
+
+\subsection{Apresentação de Códigos de Programação}
+
+\section{Inserção de Imagens}
+Para adicionar imagens, conforme as normas da ABNT, é necessário utilizar o código:
+\begin{lstlisting}
+\begin{figure}[htb]			
+  \caption{Brasao Unemat \label{fig_Cap2_brasaoUnemat}}
+  \begin{center}
+    \includegraphics[scale=0.1]{./Imagens/Brasao_Unemat.png}
+  \end{center}
+  \legend{Fonte: http://sinop.unemat.br/site/}
+\end{figure}
+\end{lstlisting}
+
+Com este código, a imagem fica na seguinte forma:
+
+\begin{figure}[htb]			
+	\caption{Brasão Unemat \label{fig_Cap2_brasaoUnemat}}
+	\begin{center}
+		\includegraphics[scale=0.1]{./Imagens/Brasao_Unemat.png}
+	\end{center}
+	\legend{Fonte: http://sinop.unemat.br/site/}
+\end{figure}

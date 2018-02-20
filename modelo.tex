@@ -57,6 +57,12 @@
 	\usepackage{indentfirst}				% Identa o primeiro paragrafo de cada secao
 	\usepackage{babel}						% Utilizado para Renomear as Secoes
 	\usepackage{lastpage}					% Utilizado para Pegar a Ultima Folha
+	\usepackage{graphicx}					% Insercao de Figuras
+	\usepackage{amsmath}
+
+	%	-----------------------------------------------------------------------------	%
+	%	-------------	Configurações de Linguagens de Programacao ------------------	%
+	%	-----------------------------------------------------------------------------	%
 
 	%	-----------------------------------------------------------------------------	%
 	%	-----------------------	Configurações das Paginas	-------------------------	%
@@ -82,7 +88,9 @@
 	%\renewcommand{Novo Comando}{Comando Antigo}
 	\newcommand{\rarrow}{\rightarrow}
 	\newcommand{\larrow}{\leftarrow}
+	\newcommand{\ba}{$\backslash$}
 
+	
 	%	--------------------- Alterações em Nomes Padronizados ----------------------	%		
 	\addto\captionsbrazil
 	{
@@ -150,8 +158,9 @@
 \input{./elementosPreTextuais/resumen/resumen.tex}
 
 \listoffigures*
-
+\cleardoublepage
 \listoftables*
+\cleardoublepage
 
 \input{./elementosPreTextuais/siglas/siglas.tex}
 \input{./elementosPreTextuais/simbolos/simbolos.tex}
