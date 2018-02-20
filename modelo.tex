@@ -53,16 +53,21 @@
 	\usepackage{lmodern}					% Define a fonte Latin Modern para o documento
 	\usepackage[T1]{fontenc}				% Para a utilizacao de acentuacao
 	\usepackage[utf8]{inputenc}				% Utilizacao do codificador UTF8
-	\usepackage{listings}					% Insercao de codigos de programacao
+	\usepackage{listings, verbatim}			% Insercao de codigos de programacao
 	\usepackage{indentfirst}				% Identa o primeiro paragrafo de cada secao
 	\usepackage{babel}						% Utilizado para Renomear as Secoes
 	\usepackage{lastpage}					% Utilizado para Pegar a Ultima Folha
 	\usepackage{graphicx}					% Insercao de Figuras
-	\usepackage{amsmath}
+	\usepackage{amsmath}					% Permite o uso de algumas funcoes matematicas
+	\usepackage[alf]{abntex2cite}			% Padrao de Citacao ABNT
+	\usepackage{xcolor, lipsum}				% Adiciona novas Cores
 
+
+	
 	%	-----------------------------------------------------------------------------	%
 	%	-------------	Configurações de Linguagens de Programacao ------------------	%
 	%	-----------------------------------------------------------------------------	%
+	
 
 	%	-----------------------------------------------------------------------------	%
 	%	-----------------------	Configurações das Paginas	-------------------------	%
@@ -172,5 +177,9 @@
 \input{./elementosTextuais/introducao/introducao.tex}
 \input{./elementosTextuais/capitulo_1/capitulo_1.tex}
 \input{./elementosTextuais/capitulo_2/capitulo_2.tex}
-\input{./elementosTextuais/capitulo_3/capitulo_3.tex}
+%\input{./elementosTextuais/capitulo_3/capitulo_3.tex}
+
+	%	------------------- Elementos Pós Textuais ---------------------	%
+%\bibliography{./elementosPosTextuais/bibliografia/bibliografia}
+
 \end{document}
