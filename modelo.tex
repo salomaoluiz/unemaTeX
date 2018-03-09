@@ -53,21 +53,36 @@
 	\usepackage{lmodern}					% Define a fonte Latin Modern para o documento
 	\usepackage[T1]{fontenc}				% Para a utilizacao de acentuacao
 	\usepackage[utf8]{inputenc}				% Utilizacao do codificador UTF8
-	\usepackage{listings, verbatim}			% Insercao de codigos de programacao
+	\usepackage{listings}					% Insercao de codigos de programacao
 	\usepackage{indentfirst}				% Identa o primeiro paragrafo de cada secao
 	\usepackage{babel}						% Utilizado para Renomear as Secoes
 	\usepackage{lastpage}					% Utilizado para Pegar a Ultima Folha
 	\usepackage{graphicx}					% Insercao de Figuras
 	\usepackage{amsmath}					% Permite o uso de algumas funcoes matematicas
 	\usepackage[alf]{abntex2cite}			% Padrao de Citacao ABNT
-	\usepackage{xcolor, lipsum}				% Adiciona novas Cores
+	\usepackage{xcolor}						% Adiciona novas Cores
+	\usepackage{amsthm}
 
 
 	
 	%	-----------------------------------------------------------------------------	%
 	%	-------------	Configurações de Linguagens de Programacao ------------------	%
 	%	-----------------------------------------------------------------------------	%
-	
+	\lstset{ language=Java,							% Define a linguagem utilizada
+	basicstyle=\ttfamily\small,					% Detalhes das Fontes
+	keywordstyle=\color{purple}\bfseries,		% Cor e estilo das palavras-chave
+	stringstyle=\color{red},					% Cor de Strings
+	commentstyle=\color{green},					% Cor dos comentarios
+	morecomment=[s][\color{blue}]{/**}{*/},		% Inserindo novo ambiente de comentario
+	showspaces=false,							% Exibe todos os espacos
+	showstringspaces=false,						% Exibe os espacos das strings somente
+	numbers=left,								% Lado onde os numeros das linhas ficam
+	numberstyle=\tiny,							% Estilo dos numeros
+	breaklines=true,							% Exibe as quebras de linha
+	backgroundcolor=\color{cyan!10},			% Cor do fundo da tela
+	xleftmargin=0pt,							% Tamanho da margem esquerda
+}
+
 
 	%	-----------------------------------------------------------------------------	%
 	%	-----------------------	Configurações das Paginas	-------------------------	%
@@ -89,6 +104,12 @@
 	%	-----------------------	Definindo Novos Comandos ----------------------------	%
 	%	-----------------------------------------------------------------------------	%
 	
+	%	--------------------------- Novos Ambiente ----------------------------------	%		
+	\newenvironment{observacao}{{\bfseries Observações:} \itshape}{}
+	\newtheorem{plain}{Teorema}
+	\newtheorem{definition}{Definição}
+
+
 	%	------------------- Comandos para a Utilização no Texto ---------------------	%		
 	%\renewcommand{Novo Comando}{Comando Antigo}
 	\newcommand{\rarrow}{\rightarrow}
@@ -109,6 +130,8 @@
 		\renewcommand{\paragraphautorefname}{Parágrafo}
 		\renewcommand{\subsubsectionautorefname}{Subsubseção}
 	}
+
+
 	%	-----------------------------------------------------------------------------	%
 	%	-----------------------	Configurar Desing da Capa ---------------------------	%
 	%	-----------------------------------------------------------------------------	%
@@ -177,7 +200,7 @@
 \input{./elementosTextuais/introducao/introducao.tex}
 \input{./elementosTextuais/capitulo_1/capitulo_1.tex}
 \input{./elementosTextuais/capitulo_2/capitulo_2.tex}
-%\input{./elementosTextuais/capitulo_3/capitulo_3.tex}
+\input{./elementosTextuais/capitulo_3/capitulo_3.tex}
 
 	%	------------------- Elementos Pós Textuais ---------------------	%
 %\bibliography{./elementosPosTextuais/bibliografia/bibliografia}

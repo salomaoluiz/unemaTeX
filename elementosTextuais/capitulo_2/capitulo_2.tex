@@ -1,6 +1,14 @@
 \chapter{Etapa Textual}
 \section{Capítulos, Seções e Subseções}
 
+Os capítulos podem ser criados usando o comando \lstinline|\chapter{}| isto irá criar um capítulo como os destes trabalho, conforme as normas, para seções e subseções tem os seguintes códigos:
+\begin{itemize}
+	\item \lstinline|\section{}|
+	\item \lstinline|\subsection{}|
+	\item \lstinline|\subsubsection{}|
+\end{itemize}
+
+para que o capítulo ou seção não seja numerada, como por exemplo a Introdução, basta adicionar um * logo após o comando, mas antes do texto, por exemplo: \lstinline|\chapter*{}|.
 
 \section{Equações e Simbologia Matemática}
 Apesar da plataforma de desenvolvimento LaTeX poder ser utilizado por qualquer ramo da ciência para o desenvolvimento de trabalhos com uma excelente tipografia, ela é principalmente utilizada por pessoas das áreas exatas, por conta da enorme facilidade em desenvolver trabalhos com enormes quantidades de equações e fórmulas, com estas se mantendo sempre organizadas. Para fazer a inserção de equações, funções ou simbologia matemática é preciso estar dentro do ambiente matemático, este é uma área apenas para a inserção de fórmulas matemáticas. 
@@ -8,25 +16,29 @@ Apesar da plataforma de desenvolvimento LaTeX poder ser utilizado por qualquer r
 Este espaço pode ser feito de duas formas, dentro do texto, ou em um ambiente separado. Para a utilização dentro do texto, as equações matemáticas precisam ser inseridas dentro de um par de \$, por exemplo \$ 3x\textasciicircum 2 = 2 \$, ao usar essa forma, o código fica da seguinte maneira: $3x^2=2$.
 
 Outra forma de se adicionar fórmulas, funções ou símbolos matemáticos é pelo ambiente \lstinline[language=TeX]|\begin{equation} \end{equation}| tudo que se colocar dentro destas funções será centralizado, enumerado, e ficará em formato matemático. Por exemplo, ao usar:
-\begin{lstlisting}[language=TeX]
-\begin{equations}\label{equacao1}
-	3x^2 = 2
-\end{equations}
-\end{lstlisting}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[scale=1]{./Imagens/capitulo_2/code_1.png}
+	\end{center}
+\end{figure}
+
 tem-se como resultado:
 
 \begin{equation}\label{equacao1}
 	3x^2 = 2
 \end{equation}
-\
+
 Está forma é muito útil quando você quer referenciar alguma equação ao longo do texto, pois com o comando \lstinline[language=TeX]|\label{}| você pode em qualquer local utilizar o \lstinline[language=TeX]|\ref{}| para referenciar aquele ``label'', por exemplo: ``Seja a equação \ref{equacao1} tem-se que...'' é possível fazer isso para todas as equações dentro do ambiente ``equation'', figuras, tabelas, basta alterar o que está escrito dentro do ``label'', e usar o ``ref'' para referenciar ela.
 
 Outra forma de inserir equações matemáticas é utilizando \lstinline[language=TeX]|\[ \]| o que colocar dentro destes colchetes será centralizado, mas não sera enumerado, por exemplo:
-\begin{lstlisting}
-\[
-3x^2=2
-\]
-\end{lstlisting}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[scale=1.5]{./Imagens/capitulo_2/code_2.png}
+	\end{center}
+\end{figure}
+
 terá como resultado:
 \[
 3x^2=2
@@ -59,6 +71,33 @@ Muitas outras funções podem ser obtidas indo em ``Math'' e em ``Math Function'
 \]
 
 O mesmo vale para integrais, frações, raízes, entre outras.
+
+\subsection{Teoremas, Definições e Provas}
+Para realizar um teorema, uma definição ou uma prova, é utilizado o pacote amsthm, que adiciona ambientes próprios para cada um dessas funções, permitindo assim que fique mais visualmente agradável o trabalho, pois não existe uma norma especifica para este tipo de etapa. Estes ambientes são:
+\begin{itemize}
+	\item [plain] Teoremas, Lemas, Proposições, etc.
+	\item [definition] Definições e Exemplos.
+	\item [proof] Provas.
+\end{itemize}
+
+Para um exemplo de teorema, podemos colocar o teorema de Pitágoras que diz:
+\begin{plain}
+	Seja um triângulo retângulo qualquer, o quadrado do valor da hipotenusa é igual a soma dos quadrados dos catetos.
+\end{plain}
+
+Já para exemplo do ambiente definition, podemos usar:
+\begin{definition}
+	A função como a relação entre dois ou mais conjuntos, estabelecida por uma lei de formação, isto é, uma regra geral.
+\end{definition}
+
+Para um exemplo do ambiente proof, que serve pra provas, podemos usar:
+
+\begin{proof}[Derivada de uma Função]
+	Seja uma função $f(x)$ em um intervalo aberto $[a,b]$, então a função $f(x)$ possui uma derivada em $[a,b]$, podemos provar isso utilizando a definição de limites:
+	\[
+		f'(x) = \lim_{h\rightarrow 0} \frac{f(x + h) - f(x)}{h}
+	\]
+\end{proof}
 \subsection{Tabulações}
 \subsubsection{Matrizes}
 Para a criação de matrizes existem os ambientes ``pmatrix'', ``bmatrix'', ``vmatrix'', ``Vmatrix'', ``matrix'' e ``array''. O ``pmatrix'' serve para a criação de matrizes com parenteses nas bordas, como por exemplo:
@@ -110,24 +149,19 @@ x & 4y & 3z & 8w \\ \hline
 3x & 7y & 5z & 12w
 \end{array}
 \]
-é possível também colocar o array dentro de um ``bmatrix'', ou ``pmatrix'' ou qualquer outra matriz, mas caso você deseje utilizar por exemplo, um lado de parentese e outro de colchete, é preciso usar as funções \lstinline[language=TeX]|\left| e \lstinline[language=TeX]|\right| acompanhado do simbolo que deseje, por exemplo:
-\begin{lstlisting}[language=TeX]
-\[
- \left[
-  \begin{array}{c|ccc}
-  2x & 3y &2z & 4w\\ 
-  x & 4y & 3z & 8w \\ \hline
-  3x & 7y & 5z & 12w
-  \end{array}
- \right)
-\]
-\end{lstlisting}
-que fornece como resultado:
+é possível também colocar o array dentro de um ``bmatrix'', ou ``pmatrix'' ou qualquer outra matriz, mas caso você deseje utilizar por exemplo, um lado de parentese e outro de colchete, é preciso usar as funções \lstinline|\left| e \lstinline|\right| acompanhado do simbolo que deseje, por exemplo, o código a seguir, apresenta o seguinte resultado:
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[scale=1]{./Imagens/capitulo_2/code_3.png}
+	\end{center}
+\end{figure}
+
 \[
 \left[
 \begin{array}{c|ccc}
-2x & 3y &2z & 4w\\ 
-x & 4y & 3z & 8w \\ \hline
+2x & 3y & 2z & 4w  \\
+x  & 4y & 3z & 8w  \\ \hline
 3x & 7y & 5z & 12w
 \end{array}
 \right)
@@ -136,30 +170,14 @@ x & 4y & 3z & 8w \\ \hline
 \subsubsection{Tabelas}
 Para a utilização de Tabelas nas normas da ABNT é preciso usar os comandos:
 
-
-
-
-\begin{lstlisting}
-\begin{table}[htb]
-\IBGEtab{%
-\caption{Aqui vai o titulo da tabela}%
-\label{tab_Cap2_exemplo}
-}{%
-\begin{tabular}{ccc}
-	\toprule
-	     Nome       &     Cidade     &    Estado    \\ \midrule\midrule
-	Pedro da Silva  &     Cuiaba     & Mato Grosso  \\
-	  Joao Neves    &   Sao Paulo    &  Sao Paulo   \\
-	Maria Antonieta & Belo Horizonte & Minas Gerais \\ \bottomrule
-\end{tabular}%
-}{%
-\fonte{Autoria Propria}%
-\nota[Nota1]{Aqui pode ser inserido uma nota sobre a tabela}
-}
-\end{table}
-\end{lstlisting}
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[scale=1]{./Imagens/capitulo_2/code_4.png}
+	\end{center}
+\end{figure}
 
 Isto fornece a seguinte tabela:
+
 \begin{table}[htb]
 \IBGEtab{%
 \caption{Aqui vai o titulo da tabela}%
@@ -179,19 +197,32 @@ Isto fornece a seguinte tabela:
 \end{table}
 
 
-\subsection{Apresentação de Códigos de Programação}
 
+\subsection{Apresentação de Códigos de Programação}
+Para a apresentação de códigos de programação, utiliza-se do pacote listings, ele é responsável por apresentar código em diferentes linguagens, com as fontes e detalhes específicos de cada linguagem, com destaques em suas palavras-chave ou em seus comentários. Para mudar as cores e outros detalhes da linguagem, olhe a parte ``Configurações de Linguagens de Programacao'' do preâmbulo.
+
+Para utilizar este pacote, adicione-o inicialmente no preâmbulo e já será possível usa-lo através do ambiente lstlisting. Por exemplo:
+\begin{lstlisting}[language = Java]
+public main Codigo(){
+ public void main[String args]{
+  int calcular = 0;
+  for(int i = 0; i <= 10; i++){
+   calcular += i;
+   System.out.printf("Ola Mundo! O valor: ", calcular);
+  }
+ }
+}
+\end{lstlisting}
+
+Está normatização pode ser feita para quase todas as linguagens, algumas eu não tive sucesso em conseguir configurar, um exemplo é a própria linguagem TeX, que não tive sucesso na configuração. 
 \section{Inserção de Imagens}
 Para adicionar imagens, conforme as normas da ABNT, é necessário utilizar o código:
-\begin{lstlisting}[language=TeX]
-\begin{figure}[htb]			
-  \caption{Brasao Unemat \label{fig_Cap2_brasaoUnemat}}
-  \begin{center}
-    \includegraphics[scale=0.1]{./Imagens/Brasao_Unemat.png}
-  \end{center}
-  \legend{Fonte: http://sinop.unemat.br/site/}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[scale=1]{./Imagens/capitulo_2/code_5.png}
+	\end{center}
 \end{figure}
-\end{lstlisting}
 
 Com este código, a imagem fica na seguinte forma:
 
@@ -202,3 +233,7 @@ Com este código, a imagem fica na seguinte forma:
 	\end{center}
 	\legend{Fonte: http://sinop.unemat.br/site/}
 \end{figure}
+
+ \begin{observacao}
+ 	Quanto as imagens é a sua organização, caso ela venha a ficar no fim de uma página, e não possui espaço para encaixa-la nesta pagina, ela automaticamente será enviada para  próxima página e ocupará o centro desta (caso não possua texto subsequente como um fim de capítulo).
+\end{observacao}
