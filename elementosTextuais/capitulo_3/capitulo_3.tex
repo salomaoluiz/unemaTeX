@@ -25,12 +25,15 @@ Para criar um bibliografia, vá na pasta ``bibliografia'' dentro da pasta ``elem
 
 \subsection{Criando uma Referência}
 Para criar uma referência, é preciso ir até o arquivo da bibliografia, e dependendo do tipo de referência, alguns elementos precisam ser colocados, por exemplo, ao usar um artigo de referência é preciso colocar:
-
-\begin{figure}[htb]
-	\begin{center}
-		\includegraphics[scale=1]{./Imagens/capitulo_3/code_1.png}
-	\end{center}
-\end{figure}
+\begin{lstlisting}
+@article{nomeReferencia,
+ title = {Titulo do Artigo},
+ author = {Autor do Artigo},
+ year = {Ano de Publicacao},
+ jounal = {Publicadora},
+ address = {Local de Publicacao}
+}
+\end{lstlisting}
 
 Isso irá criar uma referencia, que poderá ser chamada em uma citação utilizando de 3 formas, citações diretas/indiretas curtas e longas, e  citações no texto.
 
@@ -54,7 +57,7 @@ Uma observação quanto a criação de referência, é que em muitas vezes o sof
 	}
 \end{table}
 \subsection{Formas de Citações}
-Uma citação direta ou indireta pode ser adicionado no próprio texto, conforme as normas citações com até três linhas, usando \lstinline|\citeonline{nomeReferencia}|. Por exemplo: ``Conforme dito por \citeonline{gajanan} tem-se que...''.
+Uma citação no texto pode ser usada com o comando \lstinline|\citeonline{nomeReferencia}|. Por exemplo: ``Conforme dito por \citeonline{gajanan} tem-se que...''.
 
 Outra forma de se fazer uma citação é de forma direta curta, como foi utilizado na tabela anterior, para fazer uma citação dessa forma, utiliza-se após a citação o comando \lstinline|\cite{nomeReferencia}|. Por exemplo: ``Existem centenas de estilos bibliográficos mundo a fora.''\cite{araujo2016}
 
