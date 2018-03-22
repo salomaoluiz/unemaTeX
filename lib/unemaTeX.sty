@@ -1,0 +1,289 @@
+{%	---------------------------- Apresentacao -----------------------------------	%
+%																					%
+%	Desenvolvendo um modelo padrao para trabalhos academicos utilizando o ABNTeX2	%
+%	Autor: Salomão Luiz de Araújo Neto												%
+%	GitHub:	https://github.com/salomaoluiz											%
+%	LinkedIn: https://www.linkedin.com/salomao-luiz									%
+%																					%
+%	-----------------------------------------------------------------------------	%
+}
+
+{%	---------------------------------- Licenca ----------------------------------	%
+%	Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a Universidade 	%
+% 	do Estado do Mato Grosso(UNEMAT)												%
+%																					%
+%	This work may be distributed and/or modified under the conditions of the LaTeX	%
+%	Project Public License, either version 1.3 of this license or (at your option)	% 
+%	any later version.																%
+%																					%
+%	The latest version of this license is in http://www.latex-project.org/lppl.txt	%
+%	and version 1.3 or later is part of all distributions of LaTeX version 			%
+%	2005/12/01 or later.															%
+%																					%
+%	This work has the LPPL maintenance status `maintained'.							%
+% 																					%
+%	The Current Maintainer of this work is Salomão Luiz de Araújo Neto, 			%
+%	salomao.cruz.15@gmail.com														%
+% 																					%
+%	Further information about abnTeX2 are available on 								%
+%	https://github.com/abntex/abntex2												%
+%	-----------------------------------------------------------------------------	%
+}
+
+
+\ProvidesPackage{unemaTeX}[2018/03/21 Package for UNEMAT]
+
+\usepackage{lmodern}					% Define a fonte Latin Modern para o documento
+\usepackage[T1]{fontenc}				% Para a utilizacao de acentuacao
+\usepackage[utf8]{inputenc}				% Utilizacao do codificador UTF8
+\usepackage{listings}					% Insercao de codigos de programacao
+\usepackage{indentfirst}				% Identa o primeiro paragrafo de cada secao
+\usepackage{babel}						% Utilizado para Renomear as Secoes
+\usepackage{lastpage}					% Utilizado para Pegar a Ultima Folha
+\usepackage{graphicx}					% Insercao de Figuras
+\usepackage{amsmath}					% Permite o uso de algumas funcoes matematicas
+\usepackage[alf]{abntex2cite}			% Padrao de Citacao ABNT
+\usepackage{xcolor}						% Adiciona novas Cores
+\usepackage{amsthm}
+
+
+
+
+%	-----------------------------------------------------------------------------	%
+%	---------------------------	Alterações na Capa ------------------------------	%
+%	-----------------------------------------------------------------------------	%
+\renewcommand{\imprimircapa}{%
+	\begin{capa}%
+		\center
+		
+		\includegraphics[scale=0.1]{lib/Brasao_Unemat}
+		
+		{\large \imprimirinstituicao~ - \imprimirsigla  \par
+				\imprimirfaculdade    \par
+				\imprimirdepartamento \par
+				\imprimircampus}
+		
+		\vspace*{1cm}
+		
+		{\ABNTEXchapterfont\large\imprimirautor}
+		
+		\vfill
+		\begin{center}
+			\ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+		\end{center}
+		\hrulefill
+		\vfill
+				
+		\large\imprimirdata
+		
+		\vspace*{1cm}
+	\end{capa}
+}
+
+
+%	-----------------------------------------------------------------------------	%
+%	-----------------------	Alterações na Folha de Rosto ------------------------	%
+%	-----------------------------------------------------------------------------	%
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+	\begin{center}
+		{\large \imprimirinstituicao~- \imprimirsigla \par
+			\imprimirfaculdade   \par
+			\imprimirdepartamento \par
+			\imprimircampus}
+		
+		\vspace*{1cm}
+		
+		{\ABNTEXchapterfont\large\imprimirautor}
+		
+		\vspace*{\fill}\vspace*{\fill}
+		
+		\begin{center}
+			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+		\end{center}
+		
+		\vspace*{\fill}
+		
+			\hspace{.45\textwidth}
+			\begin{minipage}{.5\textwidth}
+				\imprimirtipotrabalho~apresentada à Banca Examinadora do Curso de \imprimircurso~da \imprimirinstituicao, \imprimircampus, como parte dos requisitos para obtenção do título de \imprimirtitulocurso~em \imprimirresumocurso.
+			\end{minipage}%
+			\vspace*{\fill}
+		
+		{\large\imprimirorientadorRotulo~\imprimirorientador\par}
+		
+		\abntex@ifnotempty{\imprimircoorientador}{%
+			{\large\imprimircoorientadorRotulo~\imprimircoorientador}%
+		}%
+		
+		\vspace*{\fill}
+		
+		{\large\imprimirdata}
+		\vspace*{1cm}
+	\end{center}
+}
+
+%	-----------------------------------------------------------------------------	%
+%	-----------------------	Alterações na Epigrafe ------------------------------	%
+%	-----------------------------------------------------------------------------	%
+\newcommand{\imprimirepigrafe}{
+	\vspace*{\fill}
+	\begin{flushright}
+		\begin{minipage}{7cm}
+		\end{minipage}
+		\begin{minipage}{7cm}
+			\flushright
+			\textit{\imprimirtextoepigrafe}\\
+				\textbf{\imprimirautorepigrafe}
+		\end{minipage}
+	\end{flushright}
+	
+}
+
+%	-----------------------------------------------------------------------------	%
+%	-----------------------	Alterações na Dedicatoria ---------------------------	%
+%	-----------------------------------------------------------------------------	%
+\newcommand{\imprimirdedicatoria}{
+	
+\vspace*{\fill}
+\vspace*{15cm}
+
+\textit{\imprimirtextodedicatoria}
+
+\vspace*{1cm}
+\vspace*{\fill}
+}
+
+%	-----------------------------------------------------------------------------	%
+%	-----------------------	Alterações na Folha de Aprovacao --------------------	%
+%	-----------------------------------------------------------------------------	%
+\newcommand{\imprimirfolhaaprovacao}{
+		\begin{center}
+		{\ABNTEXchapterfont\large\imprimirautor}
+		\vspace*{\fill}\vspace*{\fill}
+		\begin{center}
+			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+		\end{center}
+		\vspace*{\fill}
+		\hspace{.45\textwidth}
+		\begin{minipage}{.5\textwidth}
+			\imprimirpreambulo
+		\end{minipage}%
+		\vspace*{\fill}
+	\end{center}
+	Trabalho aprovado. \imprimirlocal, 24 de novembro de \imprimirdata:
+	\assinatura{\textbf{\imprimirorientador} \\ Orientador}
+	\assinatura{\textbf{\imprimirprofconvidadoum} \\ Convidado 1}
+	\assinatura{\textbf{\imprimirprofconvidadodois} \\ Convidado 2}
+	\begin{center}
+		\vspace*{0.5cm}
+		{\large\imprimirlocal}
+		\par
+		{\large\imprimirdata}
+		\vspace*{1cm}
+\end{center}
+}
+
+%	-----------------------------------------------------------------------------	%
+%	-------------	Configurações de Linguagens de Programacao ------------------	%
+%	-----------------------------------------------------------------------------	%
+\lstset{ language=Java,							% Define a linguagem utilizada
+	basicstyle=\ttfamily\small,					% Detalhes das Fontes
+	keywordstyle=\color{purple}\bfseries,		% Cor e estilo das palavras-chave
+	stringstyle=\color{red},					% Cor de Strings
+	commentstyle=\color{green},					% Cor dos comentarios
+	morecomment=[s][\color{blue}]{/**}{*/},		% Inserindo novo ambiente de comentario
+	showspaces=false,							% Exibe todos os espacos
+	showstringspaces=false,						% Exibe os espacos das strings somente
+	numbers=left,								% Lado onde os numeros das linhas ficam
+	numberstyle=\tiny,							% Estilo dos numeros
+	breaklines=true,							% Exibe as quebras de linha
+	backgroundcolor=\color{cyan!10},			% Cor do fundo da tela
+	xleftmargin=0pt,							% Tamanho da margem esquerda
+}
+
+%	-----------------------------------------------------------------------------	%
+%	-----------------------	Definindo Novos Comandos ----------------------------	%
+%	-----------------------------------------------------------------------------	%
+
+%	-------------------- Novos Comandos para Pre Ambulo -------------------------	%	
+
+%%%%%%%%%%%%%%%
+%% Variaveis %%
+%%%%%%%%%%%%%%%
+\newcommand{\faculdade}{\def \@faculdade}
+\newcommand{\departamento}{\def \@departamento}
+\newcommand{\campus}{\def \@campus}
+\newcommand{\sigla}{\def \@sigla}
+\newcommand{\curso}{\def \@curso}
+\newcommand{\titulocurso}{\def \@titulocurso}
+\newcommand{\resumocurso}{\def \@resumocurso}
+\newcommand{\professorconvidadoum}{\def \@professorconvidadoum}
+\newcommand{\professorconvidadodois}{\def \@professorconvidadodois}
+\newcommand{\textoepigrafe}{\def \@textoepigrafe}
+\newcommand{\autorepigrafe}{\def \@autorepigrafe}
+\newcommand{\textodedicatoria}{\def \@textodedicatoria}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% Imprimir Variaveis %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\imprimirfaculdade}{\@faculdade}
+\newcommand{\imprimirdepartamento}{\@departamento}
+\newcommand{\imprimircampus}{\@campus}
+\newcommand{\imprimirsigla}{\@sigla}
+\newcommand{\imprimircurso}{\@curso}
+\newcommand{\imprimirtitulocurso}{\@titulocurso}
+\newcommand{\imprimirresumocurso}{\@resumocurso}
+\newcommand{\imprimirprofconvidadoum}{\@professorconvidadoum}
+\newcommand{\imprimirprofconvidadodois}{\@professorconvidadodois}
+\newcommand{\imprimirautorepigrafe}{\@autorepigrafe}
+\newcommand{\imprimirtextoepigrafe}{\@textoepigrafe}
+\newcommand{\imprimirtextodedicatoria}{\@textodedicatoria}
+%%%%%%%%%%%%%%%%%%%%
+%% Valores Padrão %%
+%%%%%%%%%%%%%%%%%%%%	
+\instituicao{Universidade do Estado do Mato Grosso}
+\sigla{UNEMAT}
+
+
+
+%	------------------------------ Novos Ambiente -------------------------------	%		
+\newenvironment{observacao}{{\bfseries Observações:} \itshape}{}
+\newtheorem{plain}{Teorema}
+\newtheorem{definition}{Definição}
+
+
+%	------------------- Comandos para a Utilização no Texto ---------------------	%		
+%\renewcommand{Novo Comando}{Comando Antigo}
+\newcommand{\rarrow}{\rightarrow}
+\newcommand{\larrow}{\leftarrow}
+\newcommand{\ba}{$\backslash$}
+\renewcommand{\ABNTEXchapterfont}{\fontfamily{ptm}\fontseries{b}\selectfont}
+\renewcommand{\ABNTEXchapterfontsize}{\Large}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\footnotesize}{\small}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+
+%	--------------------- Alterações em Nomes Padronizados ----------------------	%		
+\addto\captionsbrazil
+{
+	\renewcommand{\bibname}{Refer\^{e}ncias}
+	\renewcommand{\indexname}{\'{I}ndice}
+	\renewcommand{\listfigurename}{Lista de Ilustra\c{c}\~{o}es}
+	\renewcommand{\listtablename}{Lista de Tabelas}
+	\renewcommand{\pageautorefname}{P\'{a}gina}
+	\renewcommand{\sectionautorefname}{Se\c{c}\~{a}o}
+	\renewcommand{\subsectionautorefname}{Subse\c{c}\~{a}o}
+	\renewcommand{\paragraphautorefname}{Par\'{a}grafo}
+	\renewcommand{\subsubsectionautorefname}{Subsubse\c{c}\~{a}o}
+}
+
+
+%	-----------------------------------------------------------------------------	%
+%	-----------------------	Configurações das Paginas	-------------------------	%
+%	-----------------------------------------------------------------------------	%
+
+%	----------------- Define Tamanho e Altura entre Paragrafos ------------------	%	
+\setlength{\parindent}{1.3cm}		% Define o tamanho do paragrafo
+\setlength{\parskip}{0.2cm}			% Define a altura entre os paragrafos
+
+\makeatother
